@@ -1,0 +1,11 @@
+nltk==3.5
+openpyxl
+pandas
+python-docx
+python-pptx
+PyMuPDF
+streamlit
+transformers
+python-dotenv
+wxpython
+pyspellchecker
