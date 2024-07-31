@@ -1,2 +1,2 @@
 ------------------- QUIK VSM BUILD LOGS -------------------
- Model built successfully and saved at model//User/latest3.pkl
+ Model built successfully and saved at model//User/latest.pkl

@@ -5,12 +5,8 @@ from src.searchQuery import *
 from src.utils import *
 from subprocess import check_output
 from dotenv import load_dotenv
-import tkinter as tk
-from tkinter import filedialog
+from PyQt5.QtWidgets import QApplication, QFileDialog
 load_dotenv()
-root = tk.Tk()
-root.withdraw()
-root.wm_attributes('-topmost', 1)
 
 st.set_page_config(page_title="QUIK", layout="wide", page_icon="📂")
 
@@ -177,14 +173,6 @@ def login_sidebar():
         st.rerun()
     st.sidebar.markdown("---")
 
-def select_folder():
-   """TKinter dialog to select a folder."""
-   root = tk.Tk()
-   root.withdraw()
-   folder_path = filedialog.askdirectory(master=root)
-   root.destroy()
-   return folder_path
-
 def upload_section():
     """Display the upload section for the video search engine."""
     st.sidebar.subheader("Build a new model")
@@ -192,7 +180,9 @@ def upload_section():
 
     if st.sidebar.button('Browse'):
         st.session_state["browse"] = True
-        st.session_state["video_dir"] = filedialog.askdirectory(master=root)
+        myapp = QApplication([])
+        st.session_state["video_dir"] = QFileDialog.getExistingDirectory(None, "Select Directory")
+        myapp.quit()
 
     # Display selected folder and model name input
     if "video_dir" in st.session_state:
